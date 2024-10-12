@@ -1,10 +1,24 @@
 {
-  "tasks": {
-    "dev": "deno run --allow-net --watch main.ts"
-  },
-  "imports": {
-    "@std/assert": "jsr:@std/assert@1",
-    "@/": "./src/",
-    "oak": "https://deno.land/x/oak@v12.6.1/mod.ts"
-  }
+    "tasks": {
+        "dev": "deno run --allow-net --watch main.ts",
+        "fmt": "deno fmt",
+        "fmt:check": "deno fmt --check"
+    },
+    "imports": {
+        "@/": "./src/",
+        "@oak": "jsr:@oak/oak@^17.1.0",
+        "@std/assert": "jsr:@std/assert@1"
+    },
+    "fmt": {
+        "useTabs": false,
+        "lineWidth": 125,
+        "indentWidth": 4,
+        "semiColons": true,
+        "singleQuote": true,
+        "proseWrap": "preserve",
+        "include": [
+            "src/"
+        ],
+        "exclude": []
+    }
 }

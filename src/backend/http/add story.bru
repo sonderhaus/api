@@ -1,0 +1,18 @@
+meta {
+  name: add story
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}:{{port}}/stories
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "userId": "nik",
+    "content": "this is my first story"
+  }
+}
