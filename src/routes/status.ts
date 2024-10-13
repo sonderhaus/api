@@ -7,3 +7,8 @@ statusRouter.get('/', (ctx) => {
     ctx.response.body = 'Welcome to Sonder API!';
     ctx.response.status = Status.OK;
 });
+
+statusRouter.get('/health', (ctx) => {
+    ctx.response.body = 'OK';
+    ctx.response.status = Status.OK;
+});
