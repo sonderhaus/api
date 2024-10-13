@@ -1,6 +1,6 @@
 import { Router } from '@oak';
-import { CreatesStoryInput } from '@/shared/types/story.ts';
-import { storyStore } from '@/backend/stores/stories.ts';
+import { CreatesStoryInput } from '@/types/story.ts';
+import { storyStore } from '@/stores/stories.ts';
 import { Status } from 'jsr:@oak/commons@1/status';
 
 export const storiesRouter = new Router();

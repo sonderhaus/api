@@ -1,4 +1,4 @@
-import { app } from "@/backend/server.ts";
+import { app } from "@/server.ts";
 
 const port = 8000;
 console.log(`Server running on http://localhost:${port}`);

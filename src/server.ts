@@ -1,6 +1,6 @@
 import { Application } from '@oak';
-import { storiesRouter } from '@/backend/routes/stories.ts';
-import { statusRouter } from '@/backend/routes/status.ts';
+import { storiesRouter } from '@/routes/stories.ts';
+import { statusRouter } from '@/routes/status.ts';
 
 const app = new Application();
 

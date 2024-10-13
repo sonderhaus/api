@@ -1,4 +1,4 @@
-import type { CreatesStoryInput, Story } from '@/shared/types/story.ts';
+import type { CreatesStoryInput, Story } from '@/types/story.ts';
 
 const initialStories: Story[] = [
     {
