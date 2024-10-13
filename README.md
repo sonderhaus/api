@@ -47,14 +47,15 @@ We welcome contributors who are interested in helping shape the early stages of 
 (Once available, include information about API endpoints, request/response formats, and how to use the API)
 
 
-## Contributing
-
-TBD
-
 ## Contact
 
 For any inquiries or to report issues, please open an issue in this repository.
 
+## Contributing
+
+We welcome contributions to the Sonder API!
+By contributing to this project, you agree to license your contributions under the Apache License 2.0.
+
 ## License
 
-TBD
+[LICENSE](./LICENSE.md)
