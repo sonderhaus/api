@@ -1,11 +1,13 @@
 export interface Story {
     id: string;
     userId: string;
-    content: string;
+    title: string;
+    body: string;
     createdAt: Date;
 }
 
 export interface CreatesStoryInput {
     userId: string;
-    content: string;
+    title: string;
+    body: string;
 }
