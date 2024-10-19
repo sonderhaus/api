@@ -1,4 +1,4 @@
-# sonder.land API
+# sonder.house API
 
 This repository contains the API for Sonder, an anonymous social storytelling platform that fosters empathy and connection through shared experiences. The API serves as the backend for the Sonder application, handling data management, authentication, and core business logic.
 
