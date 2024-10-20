@@ -1,0 +1,18 @@
+# Get Stories
+GET {{host}}:{{port}}/stories
+###
+
+# Get Story by ID
+GET {{host}}:{{port}}/stories/2
+###
+
+# Add Story
+POST {{host}}:{{port}}/stories
+Content-Type: application/json
+
+{
+    "userId": "nik",
+    "title": "My story",
+    "body": "This is the first story I added"
+}
+###

@@ -1,0 +1,8 @@
+# Get Status
+GET {{host}}:{{port}}/
+###
+
+# Get Health
+GET {{host}}:{{port}}/health
+###
+
