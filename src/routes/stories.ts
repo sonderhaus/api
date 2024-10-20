@@ -1,23 +1,40 @@
 import { Router } from '@oak';
-import { CreatesStoryInput } from '@/types/story.ts';
-import { storyStore } from '@/stores/stories.ts';
 import { Status } from 'jsr:@oak/commons@1/status';
+import 'jsr:@std/dotenv/load';
+import { createClient } from 'jsr:@supabase/supabase-js@2';
+
+const supabaseUrl = 'https://inokuypetguoankjbmwp.supabase.co';
+const supabaseKey = Deno.env.get('SUPABASE_KEY')!;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 export const storiesRouter = new Router();
 
 storiesRouter
-    .get('/stories', (ctx) => {
-        ctx.response.body = storyStore.getStories();
-    })
-    .get('/stories/:id', (ctx) => {
-        const id = ctx.params.id;
-        const story = storyStore.getStoryById(id);
+    .get('/stories', async (ctx) => {
+        const { data: stories, error } = await supabase
+            .from('stories')
+            .select('*');
 
-        if (!story) {
-            ctx.response.status = Status.NotFound;
-            ctx.response.body = { error: 'Story not found' };
+        if (stories) {
+            ctx.response.body = stories;
         } else {
+            ctx.response.status = Status.InternalServerError;
+            ctx.response.body = { error };
+        }
+    })
+    .get('/stories/:id', async (ctx) => {
+        const id = ctx.params.id;
+        const { data: story, error } = await supabase
+            .from('stories')
+            .select('*')
+            .eq('id', id)
+            .single();
+
+        if (story) {
             ctx.response.body = story;
+        } else {
+            ctx.response.status = Status.NotFound;
+            ctx.response.body = { error };
         }
     })
     .post('/stories', async (ctx) => {
@@ -30,10 +47,20 @@ storiesRouter
             return;
         }
 
-        const story = storyStore.addStory(body);
+        body.createdAt = new Date();
 
-        ctx.response.status = Status.Created;
-        ctx.response.body = story;
+        const { data, error } = await supabase
+            .from('stories')
+            .insert(body)
+            .select();
+
+        if (data) {
+            ctx.response.status = Status.Created;
+            ctx.response.body = data[0];
+        } else {
+            ctx.response.status = Status.InternalServerError;
+            ctx.response.body = { error };
+        }
     });
 
 function validateRequiredStoryInput(body: unknown): body is CreatesStoryInput {

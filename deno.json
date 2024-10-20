@@ -1,6 +1,7 @@
 {
     "tasks": {
-        "dev": "deno run --allow-net --watch src/main.ts",
+        "dev": "deno run -A --watch src/main.ts",
+        "deploy": "deployctl deploy --org=sonder --project=sonderhouse-api",
         "fmt": "deno fmt",
         "fmt:check": "deno fmt --check"
     },
@@ -21,5 +22,13 @@
             "src/"
         ],
         "exclude": []
+    },
+    "deploy": {
+        "project": "662bd7d4-fca6-4afd-a31d-41468cf009ee",
+        "exclude": [
+            "**/node_modules"
+        ],
+        "include": [],
+        "entrypoint": "src/main.ts"
     }
 }

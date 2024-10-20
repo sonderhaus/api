@@ -11,8 +11,8 @@ POST {{host}}:{{port}}/stories
 Content-Type: application/json
 
 {
-    "userId": "nik",
-    "title": "My story",
-    "body": "This is the first story I added"
+    "userId": "sleepy-gray-raccoon",
+    "title": "Eine neue Geschichte",
+    "body": "Heute war ein toller Tag. Ich war im Zoo und habe eine neue Geschichte gefunden."
 }
 ###
