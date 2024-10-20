@@ -21,11 +21,12 @@ storiesRouter
         }
     })
     .post('/stories', async (ctx) => {
-        const body: CreatesStoryInput = await ctx.request.body.json();
+        const body = await ctx.request.body.json();
+        const isValid = validateRequiredStoryInput(body);
 
-        if (!body.content || !body.userId) {
+        if (!isValid) {
             ctx.response.status = Status.BadRequest;
-            ctx.response.body = { error: 'Content and userId are required' };
+            ctx.response.body = { error: 'userId, title, and body are required' };
             return;
         }
 
@@ -34,3 +35,19 @@ storiesRouter
         ctx.response.status = Status.Created;
         ctx.response.body = story;
     });
+
+function validateRequiredStoryInput(body: unknown): body is CreatesStoryInput {
+    const hasProp = (prop: string): boolean => {
+        return Object.prototype.hasOwnProperty.call(body, prop);
+    };
+
+    if (
+        hasProp('userId') &&
+        hasProp('title') &&
+        hasProp('body')
+    ) {
+        return true;
+    } else {
+        return false;
+    }
+}
